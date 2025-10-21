@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkilledU Login</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f0f4f8;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-box {
+      background: #ffffff;
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(113, 170, 246, 0.1);
+      width: 350px;
+      text-align: center;
+      color: #2f6fbf
+    }
+
+    .login-box h2 {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2f6fbf;
+      margin-bottom: 25px;
+    }
+
+    .logo {
+      font-size: 40px;
+      color: #2f6fbf;
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      display: flex;
+      align-items: center;
+      margin: 12px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #fafafa;
+      padding: 10px 12px;
+    }
+
+    .input-group span {
+      margin-right: 8px;
+      font-size: 18px;
+    }
+
+    .input-group input {
+      border: none;
+      outline: none;
+      flex: 1;
+      font-size: 15px;
+      background: transparent;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      margin-top: 12px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #2f6fbf, #1b3d6b);
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #1b3d6b, #2f6fbf);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h1>SKILLEDU</h1>
+
+    <div class="input-group">
+      <input type="email" id="email" placeholder="Email">
+    </div>
+    <div class="input-group">
+      <input type="password" id="password" placeholder="Password">
+    </div>
+
+    <button class="btn" id="loginBtn">LOGIN</button>
+    <button class="btn" id="signupBtn">SIGNUP</button>
+
+  <script>
+    const BASE = "http://localhost:5000"; // Flask backend ka URL
+
+    async function postJSON(path, obj) {
+      const res = await fetch(BASE + path, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(obj)
+      });
+      const data = await res.json();
+      return { status: res.status, data };
+    }
+
+    // LOGIN
+    document.getElementById("loginBtn").onclick = async () => {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      if (!email || !password) {
+        alert("Please enter email and password");
+        return;
+      }
+
+      const r = await postJSON("/login", { email, password });
+      if (r.status === 200) {
+        window.location.href = "welcome.html";
+      } else {
+        alert("Login failed: " + (r.data.error || "Unknown error"));
+      }
+    };
+
+    // SIGNUP
+    document.getElementById("signupBtn").onclick = async () => {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      if (!email || !password) {
+        alert("Please enter email and password");
+        return;
+      }
+
+      const r = await postJSON("/register", { email, password });
+      if (r.status === 201) {
+        window.location.href = "welcome.html";
+      } else {
+        alert("Signup failed: " + (r.data.error || "Unknown error"));
+      }
+    };
+
+    // Link "Sign Up" text bhi button ki tarah kaam kare
+    document.getElementById("signupLink").onclick = (e) => {
+      e.preventDefault();
+      document.getElementById("signupBtn").click();
+    };
+  </script>
+</body>
+</html>

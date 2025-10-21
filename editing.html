@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SKILLEDU - Editing</title>
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #ffffff;
+      color: #333;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background: #ffffff;
+      font-weight: bold;
+      color: #2f6fbf;
+      font-size: 24px;
+    }
+
+    .navbar .menu, .navbar .more {
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    /* Progress bar */
+    .progress-bar {
+      width: 60%;
+      height: 14px;
+      background: #d8e6fc;
+      border-radius: 20px;
+      margin: 15px auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress {
+      height: 100%;
+      width: 25%;
+      background: #2f6fbf;
+      border-radius: 20px;
+    }
+
+    /* Heading */
+    .heading {
+      margin: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      color: #333;
+    }
+
+    /* Options */
+    .option-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding: 0 20px;
+    }
+
+    .option-item {
+      background: #e4efff;
+      padding: 15px 20px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      font-size: 17px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .option-item:hover {
+      background: #cbdfff;
+    }
+
+    .option-item i {
+      margin-right: 10px;
+      font-size: 18px;
+      color: #2f6fbf;
+    }
+
+    /* Bottom Nav */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #e4efff;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      border-top: 1px solid #ccc;
+    }
+
+    .bottom-nav i {
+      font-size: 20px;
+      cursor: pointer;
+      color: #2f6fbf;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="menu"><i class="fas fa-bars"></i></div>
+    <div>SKILLEDU</div>
+    <div class="more"><i class="fas fa-ellipsis-v"></i></div>
+  </div>
+
+ 
+  <!-- Progress Bar -->
+  <div class="progress-bar">
+    <div class="progress" id="progress"></div>
+  </div>
+
+  <!-- Heading -->
+  <div class="heading">Explore Editing</div>
+
+  <!-- Options -->
+  <div class="option-list">
+    <div class="option-item"onclick="updateProgress(20, 'q1.html')"><i class="fas fa-image"></i> Photo Editing</div>
+    <div class="option-item"onclick="updateProgress(20, 'q1.html')"><i class="fas fa-video"></i> Video Editing</div>
+    <div class="option-item"onclick="updateProgress(20, 'q1.html')"><i class="fas fa-music"></i> Audio Editing</div>
+    <div class="option-item"onclick="updateProgress(20, 'q1.html')"><i class="fas fa-layer-group"></i> Advanced & Mixed Editing</div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <div class="bottom-nav">
+    <i class="fas fa-home"></i>
+    <i class="fas fa-search"></i>
+    <i class="fas fa-book-open"></i>
+    <i class="fas fa-user"></i>
+  </div>
+  <script>
+    // Show saved progress if available
+    const savedProgress = localStorage.getItem('progress');
+    document.getElementById('progress').style.width = 10 ? 10 + '%' : '20%';
+
+    // Function to update and save progress
+    function updateProgress(value, nextPage) {
+      localStorage.setItem('progress', value);
+      const progress = document.getElementById("progress");
+      progress.style.width = 10 + "%";
+      setTimeout(() => {
+        window.location.href = nextPage;
+      }, 500);
+    }
+  </script>
+
+</body>
+</html>

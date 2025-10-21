@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkilledU Home</title>
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #ffffff;
+      color: #333;
+    }
+
+    /* Top Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background: #ffffff;
+      font-weight: bold;
+      color: #2f6fbf;
+      font-size: 24px;
+    }
+
+    .navbar .menu,
+    .navbar .more {
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .heading {
+      margin: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      color: #333;
+    }
+
+    /* Course List */
+    .course-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 0 20px;
+      margin-bottom: 70px;
+    }
+
+    .course-item {
+      background: #e4efff;
+      padding: 12px 16px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .course-item:hover {
+      background: #cbdfff;
+    }
+
+    .course-item i {
+      margin-right: 10px;
+      font-size: 18px;
+      color: #2f6fbf;
+    }
+
+    /* Bottom Nav */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #e4efff;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      border-top: 1px solid #ccc;
+    }
+
+    .bottom-nav i {
+      font-size: 20px;
+      cursor: pointer;
+      color: #2f6fbf;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="menu"><i class="fas fa-bars"></i></div>
+    <div>SKILLEDU</div>
+    <div class="more"><i class="fas fa-ellipsis-v"></i></div>
+  </div>
+
+  <!-- Heading -->
+  <div class="heading">What do you want to learn!</div>
+
+  <!-- Courses -->
+  <div class="course-list">
+    <div class="course-item" onclick="window.location.href='education.html'"><i class="fas fa-book"></i> Education</div>
+    <div class="course-item" onclick="window.location.href='coding.html'"><i class="fas fa-laptop-code"></i> Coding</div>
+    <div class="course-item" onclick="window.location.href='graphic.html'"><i class="fas fa-paint-brush"></i> Graphic Design</div>
+    <div class="course-item" onclick="window.location.href='editing.html'"><i class="fas fa-cut"></i> Editing</div>
+    <div class="course-item" onclick="window.location.href='computer(h).html'"><i class="fas fa-desktop"></i> Computer (hardware)</div>
+    <div class="course-item" onclick="window.location.href='computer(s).html'"><i class="fas fa-cogs"></i> Computer (software)</div>
+    <div class="course-item" onclick="window.location.href='communication.html'"><i class="fas fa-language"></i> English Communication</div>
+    <div class="course-item" onclick="window.location.href='homescience.html'"><i class="fas fa-home"></i> Home Science</div>
+    <div class="course-item" onclick="window.location.href='bussines.html'"><i class="fas fa-briefcase"></i> Business</div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <div class="bottom-nav">
+    <i class="fas fa-home"></i>
+    <i class="fas fa-search"></i>
+    <i class="fas fa-book-open"></i>
+    <i class="fas fa-user"></i>
+  </div>
+</body>
+</html>
